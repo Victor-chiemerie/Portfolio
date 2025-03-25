@@ -887,6 +887,123 @@ $size-header-pad: 4em;
 		}
 	}
 
+	.article-bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 0.3rem
+	}
+
+/* Framework */
+
+ul.framework {
+	@include vendor('display', 'flex');
+	cursor: default;
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+	gap: 10px;
+
+	li {
+		vertical-align: middle;
+		padding: 0;
+
+		p.stack {
+			padding: 0;
+			text-decoration: underline;
+		}
+	}
+
+	@include breakpoint('<=xsmall') {
+		&:not(.fixed) {
+			@include vendor('flex-direction', 'row');
+			margin-left: 0;
+			width: fit-content !important;
+
+			li {
+				@include vendor('flex-grow', '1');
+				@include vendor('flex-shrink', '1');
+				text-align: start;
+				width: fit-content;
+
+				> * {
+					width: fit-content;
+				}
+
+			}
+		}
+	}
+}
+
+/* Tags */
+
+ul.tags {
+	@include vendor('display', 'flex');
+	cursor: default;
+	list-style: none;
+	margin-left: (_size(element-margin) * -0.5);
+	padding-left: 0;
+
+	li {
+		padding: 0 0 0 (_size(element-margin) * 0.5);
+		vertical-align: middle;
+	}
+
+	&.special {
+		@include vendor('justify-content', 'flex-start');
+		width: fit-content;
+		margin-left: 0;
+	}
+
+	&.stacked {
+		@include vendor('flex-direction', 'row');
+		margin-left: 0;
+
+		li {
+			padding: (_size(element-margin) * 0.65) 0 0 0;
+		}
+	}
+
+	&.fit {
+		width: calc(100% + #{_size(element-margin) * 0.5});
+
+		li {
+			@include vendor('flex-grow', '1');
+			@include vendor('flex-shrink', '1');
+			width: fit-content;
+
+			> * {
+				width: fit-content;
+			}
+		}
+
+		&.stacked {
+			width: 100%;
+		}
+	}
+
+	@include breakpoint('<=xsmall') {
+		&:not(.fixed) {
+			@include vendor('flex-direction', 'row');
+			margin-left: 0;
+			width: fit-content !important;
+
+			li {
+				@include vendor('flex-grow', '1');
+				@include vendor('flex-shrink', '1');
+				padding: (_size(element-margin) * 0.5) 0 0 0;
+				text-align: start;
+				width: fit-content;
+
+				> * {
+					width: fit-content;
+				}
+
+			}
+		}
+	}
+}
+
 /* Table */
 
 	.table-wrapper {
@@ -971,21 +1088,22 @@ $size-header-pad: 4em;
 	.button {
 		@include vendor('appearance', 'none');
 		@include vendor('transition', ('background-color #{_duration(transition)} ease-in-out', 'color #{_duration(transition)} ease-in-out', 'border-color #{_duration(transition)} ease-in-out'));
-		background-color: transparent;
 		border-radius: _size(border-radius);
 		border: solid 3px _palette(border);
 		color: _palette(fg-bold) !important;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: _font(weight-bold);
-		height: 3.15em;
-		height: calc(2.75em + 6px);
-		line-height: 2.75em;
-		min-width: 10em;
-		padding: 0 1.5em;
 		text-align: center;
 		text-decoration: none;
 		white-space: nowrap;
+		background-color: transparent;
+		height: 3em;
+		padding: 0 0.5em;
+
+		&.project {
+			font-size: 0.7em;
+		}
 
 		&:hover {
 			border-color: _palette(accent1, bg);
@@ -1053,10 +1171,7 @@ $size-header-pad: 4em;
 		@include vendor('appearance', 'none');
 		@include vendor('transition', ('background-color #{_duration(transition)} ease-in-out', 'color #{_duration(transition)} ease-in-out', 'border-color #{_duration(transition)} ease-in-out'));
 		background-color: transparent;
-		border-radius: _size(border-radius);
-		border: solid 3px _palette(border);
 		color: _palette(fg-bold) !important;
-		cursor: pointer;
 		display: inline-block;
 		font-weight: _font(weight-bold);
 		padding: 0 0.5em;
@@ -1085,7 +1200,7 @@ $size-header-pad: 4em;
 
 		&.fit {
 			min-width: 0;
-			width: 100%;
+			width: fit-content;
 		}
 
 		&.small {
@@ -1098,24 +1213,16 @@ $size-header-pad: 4em;
 
 		&.primary {
 			background-color: _palette(accent1, bg);
-			border-color: _palette(accent1, bg);
 			color: _palette(accent1, fg-bold) !important;
-
-			&:hover {
-				background-color: lighten(_palette(accent1, bg), 5);
-				border-color: lighten(_palette(accent1, bg), 5);
-			}
 
 			&:active {
 				background-color: darken(_palette(accent1, bg), 5);
-				border-color: darken(_palette(accent1, bg), 5);
 			}
 		}
 
 		&.disabled,
 		&:disabled {
 			background-color: _palette(border2-bg) !important;
-			border-color: _palette(border2-bg) !important;
 			color: _palette(fg-light) !important;
 			cursor: default;
 		}
