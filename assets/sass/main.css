@@ -2078,6 +2078,9 @@ input[type=button],
   background-color: transparent;
   height: 3em;
   padding: 0 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 input[type=submit].project,
 input[type=reset].project,

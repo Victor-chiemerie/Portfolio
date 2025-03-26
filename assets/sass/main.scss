@@ -1100,6 +1100,9 @@ ul.tags {
 		background-color: transparent;
 		height: 3em;
 		padding: 0 0.5em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
 		&.project {
 			font-size: 0.7em;
