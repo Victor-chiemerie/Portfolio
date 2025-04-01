@@ -892,7 +892,11 @@ $size-header-pad: 4em;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-top: 0.3rem
+		margin-top: 0.3rem;
+
+		a {
+			border: none;
+		}
 	}
 
 /* Framework */
