@@ -52,7 +52,8 @@ table {
 
 body {
   -webkit-text-size-adjust: none;
-  text-size-adjust: none;
+  -moz-text-size-adjust: none;
+       text-size-adjust: none;
 }
 
 mark {
@@ -1884,6 +1885,9 @@ ul.actions.fit.stacked {
   justify-content: space-between;
   align-items: center;
   margin-top: 0.3rem;
+}
+.article-bottom a {
+  border: none;
 }
 
 /* Framework */
